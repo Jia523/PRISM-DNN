@@ -1,5 +1,5 @@
-**<h1>PIST-DNN: A Two-Stage Deep Learning Framework for Pixel-wise Aerosol Inversion</h1>** 
-This tutorial provides step-by-step guidance on how to use **PIST-DNN**, a two-stage deep learning framework designed for satellite-based aerosol retrieval. The framework includes:
+**<h1>PIST-DNN: A Two-Stage pIxel-based Spatial-Temporal Deep Neural Network for Pixel-wise Aerosol Inversion</h1>** 
+This tutorial provides step-by-step guidance on how to use **PIST-DNN**, a two-stage deep learning framework designed for the retrieval of fine- and coarse-mode aerosol optical depth from satellite data. The framework includes:
 * **Pretraining** using pixel-wise data without ground truth
 * **Finetuning** using data with real station observations
 
