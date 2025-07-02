@@ -1,0 +1,28 @@
+seed: 42
+
+test_data_path: "data/inference"
+
+output_folder_path: "outputs/finetune_result"
+
+scaler_path: "outputs/pretrain/input_cont_scaler.pkl"
+encoder_path: "outputs/pretrain/input_cate_encoders.pkl"
+model_checkpoint_path: "outputs/finetune/lightning_logs/version_3/checkpoints/epoch=143-step=864.ckpt"
+
+dataset:
+  input_cont_cols: ['MOD08_C','MOD09_C_1','MOD09_C_2','MOD09_C_3','MOD09_C_4','MOD09_C_5','MOD09_C_6','MOD09_C_7','MOD09_C_8','MOD09_C_9','MOD09_C_10',
+                    'MOD09_C_11','MOD09_C_12','MOD09_C_13','MOD09_C_14','MOD09_C_15',
+                    'blh_C','ps_C','t2m_C','wind_C','rh_C',
+                     'bc_C','oc_C','dust_C','dust25_C','so4_C','ssa_C','ssa25_C']
+  input_cate_cols: ['Month']
+  task_target_cols: ['fmf','faod','caod']
+
+dataloader:
+  batch_size: 512
+  num_workers: 4
+  pin_memory: True
+  persistent_workers: True
+
+trainer:
+  max_epochs: 162
+  accelerator: "gpu"
+  devices: 1

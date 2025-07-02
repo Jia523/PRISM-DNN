@@ -1,0 +1,76 @@
+seed: 42
+
+pretrain_data_path: "data/pretrain/pretrain_data.feather"
+output_folder_path: "outputs/pretrain"
+
+dataset:
+  input_cont_cols: ['MOD08_C','MOD09_C_1','MOD09_C_2','MOD09_C_3','MOD09_C_4','MOD09_C_5','MOD09_C_6','MOD09_C_7','MOD09_C_8','MOD09_C_9','MOD09_C_10',
+                    'MOD09_C_11','MOD09_C_12','MOD09_C_13','MOD09_C_14','MOD09_C_15','blh_C','ps_C','t2m_C','wind_C','rh_C',
+                    'bc_C','oc_C','dust_C','dust25_C','so4_C','ssa_C','ssa25_C']
+  input_cate_cols: ['Month']
+  space_target_cols: ['MOD08_P1', 'MOD08_P2', 'MOD08_P3', 'MOD08_P4', 'MOD08_P6', 'MOD08_P7', 'MOD08_P8', 'MOD08_P9',
+                      'MOD09_P1_1', 'MOD09_P2_1','MOD09_P3_1', 'MOD09_P4_1',  'MOD09_P6_1', 'MOD09_P7_1', 'MOD09_P8_1', 'MOD09_P9_1', 
+                      'MOD09_P1_2', 'MOD09_P2_2', 'MOD09_P3_2', 'MOD09_P4_2', 'MOD09_P6_2', 'MOD09_P7_2', 'MOD09_P8_2', 'MOD09_P9_2', 
+                      'MOD09_P1_3', 'MOD09_P2_3', 'MOD09_P3_3', 'MOD09_P4_3', 'MOD09_P6_3', 'MOD09_P7_3', 'MOD09_P8_3', 'MOD09_P9_3', 
+                      'MOD09_P1_4', 'MOD09_P2_4', 'MOD09_P3_4', 'MOD09_P4_4', 'MOD09_P6_4', 'MOD09_P7_4', 'MOD09_P8_4', 'MOD09_P9_4', 
+                      'MOD09_P1_5', 'MOD09_P2_5', 'MOD09_P3_5', 'MOD09_P4_5', 'MOD09_P6_5', 'MOD09_P7_5', 'MOD09_P8_5', 'MOD09_P9_5',
+                      'MOD09_P1_6', 'MOD09_P2_6', 'MOD09_P3_6', 'MOD09_P4_6', 'MOD09_P6_6', 'MOD09_P7_6', 'MOD09_P8_6', 'MOD09_P9_6', 
+                      'MOD09_P1_7', 'MOD09_P2_7', 'MOD09_P3_7', 'MOD09_P4_7', 'MOD09_P6_7', 'MOD09_P7_7', 'MOD09_P8_7', 'MOD09_P9_7',
+                      'MOD09_P1_8', 'MOD09_P2_8', 'MOD09_P3_8', 'MOD09_P4_8', 'MOD09_P6_8', 'MOD09_P7_8', 'MOD09_P8_8', 'MOD09_P9_8', 
+                      'MOD09_P1_9', 'MOD09_P2_9', 'MOD09_P3_9', 'MOD09_P4_9', 'MOD09_P6_9', 'MOD09_P7_9', 'MOD09_P8_9', 'MOD09_P9_9', 
+                      'MOD09_P1_10', 'MOD09_P2_10', 'MOD09_P3_10', 'MOD09_P4_10', 'MOD09_P6_10', 'MOD09_P7_10', 'MOD09_P8_10', 'MOD09_P9_10',
+                      'MOD09_P1_11', 'MOD09_P2_11', 'MOD09_P3_11', 'MOD09_P4_11', 'MOD09_P6_11', 'MOD09_P7_11', 'MOD09_P8_11', 'MOD09_P9_11',
+                      'MOD09_P1_12', 'MOD09_P2_12', 'MOD09_P3_12', 'MOD09_P4_12', 'MOD09_P6_12', 'MOD09_P7_12', 'MOD09_P8_12', 'MOD09_P9_12',  
+                      'MOD09_P1_13', 'MOD09_P2_13', 'MOD09_P3_13', 'MOD09_P4_13', 'MOD09_P6_13', 'MOD09_P7_13', 'MOD09_P8_13', 'MOD09_P9_13', 
+                      'MOD09_P1_14', 'MOD09_P2_14', 'MOD09_P3_14', 'MOD09_P4_14', 'MOD09_P6_14', 'MOD09_P7_14', 'MOD09_P8_14', 'MOD09_P9_14', 
+                      'MOD09_P1_15', 'MOD09_P2_15', 'MOD09_P3_15', 'MOD09_P4_15',  'MOD09_P6_15','MOD09_P7_15','MOD09_P8_15', 'MOD09_P9_15',  
+                      'blh_P1',   'blh_P2',    'blh_P3',    'blh_P4',     'blh_P6',     'blh_P7',    'blh_P8',       'blh_P9',  
+                      'ps_P1',    'ps_P2',     'ps_P3',     'ps_P4',      'ps_P6',      'ps_P7',     'ps_P8',        'ps_P9',  
+                      't2m_P1',   't2m_P2',    't2m_P3',    't2m_P4',     't2m_P6',     't2m_P7',    't2m_P8',       't2m_P9', 
+                      'wind_P1',  'wind_P2',   'wind_P3',   'wind_P4',    'wind_P6',    'wind_P7',   'wind_P8',      'wind_P9', 
+                      'rh_P1',    'rh_P2',     'rh_P3',     'rh_P4',      'rh_P6',      'rh_P7',     'rh_P8',        'rh_P9', 
+                      'bc_P1',    'bc_P2',     'bc_P3',     'bc_P4',      'bc_P6',      'bc_P7',     'bc_P8',        'bc_P9', 
+                      'dust_P1',  'dust_P2',   'dust_P3',   'dust_P4',    'dust_P6',   'dust_P7',    'dust_P8',      'dust_P9', 
+                      'dust25_P1','dust25_P2', 'dust25_P3', 'dust25_P4',  'dust25_P6', 'dust25_P7',  'dust25_P8',    'dust25_P9', 
+                      'oc_P1',    'oc_P2',     'oc_P3',     'oc_P4',      'oc_P6',      'oc_P7',     'oc_P8',        'oc_P9', 
+                      'so4_P1',   'so4_P2',    'so4_P3',    'so4_P4',     'so4_P6',     'so4_P7',    'so4_P8',       'so4_P9', 
+                      'ssa_P1',   'ssa_P2',    'ssa_P3',    'ssa_P4',     'ssa_P6',     'ssa_P7',    'ssa_P8',       'ssa_P9', 
+                      'ssa25_P1', 'ssa25_P2',  'ssa25_P3',  'ssa25_P4',   'ssa25_P6', 'ssa25_P7',    'ssa25_P8',     'ssa25_P9']
+  time_target_cols: ['YES_MOD08', 'YES_MOD09_1', 'YES_MOD09_2', 'YES_MOD09_3', 'YES_MOD09_4', 'YES_MOD09_5', 'YES_MOD09_6', 'YES_MOD09_7', 'YES_MOD09_8', 
+                     'YES_MOD09_9', 'YES_MOD09_10', 'YES_MOD09_11', 'YES_MOD09_12', 'YES_MOD09_13', 'YES_MOD09_14', 'YES_MOD09_15', 'YES_blh', 'YES_ps', 
+                     'YES_t2m', 'YES_wind', 'YES_rh','YES_bc', 'YES_dust', 'YES_dust25', 'YES_oc','YES_so4', 'YES_ssa', 'YES_ssa25',
+                     'TOM_MOD08', 'TOM_MOD09_1', 'TOM_MOD09_2', 'TOM_MOD09_3', 'TOM_MOD09_4', 'TOM_MOD09_5', 'TOM_MOD09_6', 'TOM_MOD09_7', 'TOM_MOD09_8', 
+                     'TOM_MOD09_9', 'TOM_MOD09_10', 'TOM_MOD09_11', 'TOM_MOD09_12', 'TOM_MOD09_13', 'TOM_MOD09_14', 'TOM_MOD09_15', 'TOM_blh', 'TOM_ps', 
+                     'TOM_t2m', 'TOM_wind', 'TOM_rh','TOM_bc', 'TOM_dust', 'TOM_dust25', 'TOM_oc','TOM_so4', 'TOM_ssa', 'TOM_ssa25']
+
+dataloader:
+  batch_size: 1024
+  num_workers: 4
+  pin_memory: True
+  persistent_workers: True
+
+model:
+  d_model: 128
+  n_tf_head: 4
+  n_tf_layer: 4
+  p_tf_drop: 0.2
+  n_mlp_layer: 2
+  p_mlp_drop: 0.2
+  lr: 0.0003
+
+callbacks:
+  model_checkpoint:
+    save_top_k: 1
+    monitor: "valid_loss"
+    mode: "min"
+  early_stopping:
+    monitor: "valid_loss"
+    mode: "min"
+    patience: 10
+    min_delta: 0.0
+
+trainer:
+  max_epochs: 200
+  accelerator: "gpu"
+  devices: 1
+
